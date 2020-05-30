@@ -13,3 +13,8 @@ and later retrieve them.
 * Add functionality to allow user to log in and 
 therefore maintain a history of viewed pages, or
 liked content, etc
+
+#### Look into this
+* The bootstrap version has something to do with the reoccuring error
+of the body overlapping with the body. I'll look into it later
+
