@@ -6,6 +6,7 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 from datetime import datetime
+import dateutil.parser
 import scrapy
 from scrapy.item import Item, Field
 from scrapy.loader.processors import MapCompose, TakeFirst
@@ -53,6 +54,10 @@ class QuoteItem(Item):
     tags = Field()
 
 
+def convert_datetime(date):
+    return dateutil.parser.parse(date)
+
+
 class PostItem(Item):
     post_source = Field(
         output_processor=TakeFirst()
@@ -62,7 +67,7 @@ class PostItem(Item):
         output_processor=TakeFirst()
     )
     post_date = Field(
-        # input_processor=MapCompose(str.strip, ),
+        input_processor=MapCompose(convert_datetime),
         output_processor=TakeFirst()
     )
     post_link = Field(

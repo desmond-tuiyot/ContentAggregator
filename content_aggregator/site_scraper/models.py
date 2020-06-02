@@ -27,7 +27,7 @@ class Post(Base):
     source = Column('source', Text())
     title = Column('title', Text())
     link = Column('link', Text())
-    date = Column('date', Text())
+    date = Column('date', DateTime)
 
 
 # Association Table for Many-to-Many relationship between Quote and Tag
