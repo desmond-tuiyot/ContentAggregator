@@ -54,6 +54,9 @@ class QuoteItem(Item):
 
 
 class PostItem(Item):
+    post_source = Field(
+        output_processor=TakeFirst()
+    )
     post_title = Field(
         input_processor=MapCompose(str.strip),
         output_processor=TakeFirst()
