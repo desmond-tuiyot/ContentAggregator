@@ -17,24 +17,7 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
           <span class="navbar-brand mb-0 mx-auto h1">Data Science / Computer Science Central</span>
-{#        <div class="container">#}
-{#            <a class="navbar-brand" href="/">DataScience/Programming Central</a>#}
-{#            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"#}
-{#                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">#}
-{#                <span class="navbar-toggler-icon"></span>#}
-{#            </button>#}
-{#            <div class="collapse navbar-collapse" id="navbarToggle">#}
-{#                <div class="navbar-nav mr-auto">#}
-{#                    <a class="nav-item nav-link" href="/">Home</a>#}
-{#                    <a class="nav-item nav-link" href="#">About</a>#}
-{#                </div>#}
-{#                <!-- Navbar Right Side -->#}
-{#                <div class="navbar-nav">#}
-{#                    <a class="nav-item nav-link" href="#">Login</a>#}
-{#                    <a class="nav-item nav-link" href="#">Register</a>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+          {% block source_name %}{% endblock %}
     </nav>
 </header>
 
@@ -42,30 +25,16 @@
     <div class="row">
         <div class="col-md-9">
             <!-- Main Content -->
-            {% for post in posts %}
-                <article class="media content-section">
-                    <div class="media-body">
-                        <div class="article-metadata">
-{#                            <a class="mr-2" href="#">{{ post.link }}</a>#}
-                            <small class="text-muted">{{ post.date }}</small>
-                        </div>
-                        <h4><a class="article-title" href={{ post.link }}>{{ post.title }}</a></h4>
-                        <p class="article-content"><a href={{ post.source.link }}>{{ post.source.source_name }}</a>
-                        </p>
-                    </div>
-                </article>
-            {% endfor %}
+            {% block main_content %}{% endblock %}
         </div>
         <div class="col-md-3">
             <div class="content-section">
                 <h3>Select Source</h3>
 {#                <p class='font-weight-bold'> Data Science#}
                 <div class="list-group">
-                    {% for source in sources %}
-                        <a href="#" class="list-group-item  list-group-item-action">{{ source.source_name }}</a>
-                    {% endfor %}
+                    {% block source_list_content %}{% endblock %}
                 </div>
-                </p>
+{#                </p>#}
             </div>
         </div>
     </div>
