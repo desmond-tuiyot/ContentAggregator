@@ -1,5 +1,4 @@
 from sqlalchemy import create_engine, Column, Table, ForeignKey, MetaData
-from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import (
     Integer, String, Date, DateTime, Float, Boolean, Text)
@@ -24,6 +23,7 @@ class Post(Base):
     __tablename__ = "post"
 
     id = Column(Integer, primary_key=True)
+    source = Column('source', Text())
     title = Column('title', Text())
     link = Column('link', Text())
-    date = Column('date', Text())
+    date_posted = Column('date', DateTime)

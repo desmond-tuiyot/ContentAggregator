@@ -65,10 +65,10 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'site_scraper.pipelines.SiteScraperPipeline': 300,
+   'content_aggregator.content_scraper.content_scraper.pipelines.SiteScraperPipeline': 300,
    # 'site_scraper.pipelines.SaveQuotesPipeline': 301,
-   'site_scraper.pipelines.SavePostsPipeline': 302,
-
+   'content_aggregator.content_scraper.content_scraper.pipelines.SavePostsPipeline': 302,
+   # 'content_scraper.pipelines.OriginalSavePostsPipeline': 303,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -94,4 +94,4 @@ ITEM_PIPELINES = {
 
 
 # database to which scraped content will be stored
-CONNECTION_STRING = 'sqlite:///aggregator.db'
+CONNECTION_STRING = 'sqlite:///content.db'

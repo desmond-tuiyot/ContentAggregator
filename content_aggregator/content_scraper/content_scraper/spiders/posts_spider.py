@@ -1,19 +1,16 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 from scrapy.loader import ItemLoader
-from site_scraper.items import PostItem
-
-
-# post_item = PostItem()
+from content_aggregator.content_scraper.content_scraper.items import PostItem
 
 
 class AnalyticsVidhyaSpider(scrapy.Spider):
     name = 'analytics_vidhya'
     start_urls = ['https://www.analyticsvidhya.com/blog-archive/page/1',
-                  'https://www.analyticsvidhya.com/blog-archive/page/2',
-                  'https://www.analyticsvidhya.com/blog-archive/page/3',
-                  'https://www.analyticsvidhya.com/blog-archive/page/4',
-                  'https://www.analyticsvidhya.com/blog-archive/page/5',
+                  # 'https://www.analyticsvidhya.com/blog-archive/page/2',
+                  # 'https://www.analyticsvidhya.com/blog-archive/page/3',
+                  # 'https://www.analyticsvidhya.com/blog-archive/page/4',
+                  # 'https://www.analyticsvidhya.com/blog-archive/page/5',
                  ]
 
     def parse(self, response):

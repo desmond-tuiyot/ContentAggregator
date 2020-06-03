@@ -1,33 +1,25 @@
-from flask import Flask, render_template, url_for
-
-app = Flask(__name__)
-
-
-posts = [
-    {
-        'author': 'Corey Schafer',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'April 20, 2018'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'April 21, 2018'
-    }
-]
+# import os
+# import secrets
+# from PIL import Image
+from flask import render_template, url_for, flash, redirect, request, abort
+from content_aggregator.content_frontend import app, db
+# from content_aggregator.content_frontend.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from content_aggregator.content_frontend.models import Post
 
 
-@app.route('/')
-@app.route('/home')
+@app.route("/")
+@app.route("/home")
 def home():
+    # page = request.args.get('page', default=1, type=int)
+    posts = Post.query.order_by(Post.date.desc())
+        # .paginate(per_page=20, page=page)
     return render_template('home.html', posts=posts)
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html', title="About")
+#
+# @app.route('/about')
+# def about():
+#     return render_template('about.html', title="About")
 
 
 # @app.route('/register')

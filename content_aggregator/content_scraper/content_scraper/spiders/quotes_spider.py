@@ -1,6 +1,6 @@
 import scrapy
 from scrapy.loader import ItemLoader
-from site_scraper.items import QuoteItem
+from content_aggregator.content_scraper.content_scraper.items import QuoteItem
 
 
 quote_item = QuoteItem()
