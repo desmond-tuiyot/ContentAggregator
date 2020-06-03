@@ -7,14 +7,21 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     link = db.Column(db.String, nullable=False)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    source = db.Column(db.String, nullable=False)
-
-    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    source_id = db.Column(db.Integer, db.ForeignKey('source.id'), nullable=False)
     # content = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+
+class Source(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    source_name = db.Column(db.String, nullable=False)
+    link = db.Column(db.String, nullable=False)
+    posts = db.relationship('Post', backref='source', lazy=True)
+
 
 # @login_manager.user_loader
 # def load_user(user_id):

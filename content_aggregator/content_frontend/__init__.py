@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aggregator.db' # configure later
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///content.db' # configure later
 db = SQLAlchemy(app)
 
 from content_aggregator.content_frontend import routes

@@ -16,7 +16,7 @@
 <body>
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-          <span class="navbar-brand mb-0 mx-auto h1">DataScience/Programming Central</span>
+          <span class="navbar-brand mb-0 mx-auto h1">Data Science / Computer Science Central</span>
 {#        <div class="container">#}
 {#            <a class="navbar-brand" href="/">DataScience/Programming Central</a>#}
 {#            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"#}
@@ -50,7 +50,8 @@
                             <small class="text-muted">{{ post.date }}</small>
                         </div>
                         <h4><a class="article-title" href={{ post.link }}>{{ post.title }}</a></h4>
-                        <p class="article-content"><b>Source: </b>{{ post.source }}</p>
+                        <p class="article-content"><a href={{ post.source.link }}>{{ post.source.source_name }}</a>
+                        </p>
                     </div>
                 </article>
             {% endfor %}
@@ -58,19 +59,11 @@
         <div class="col-md-3">
             <div class="content-section">
                 <h3>Select Source</h3>
-                <p class='font-weight-bold'> Data Science
+{#                <p class='font-weight-bold'> Data Science#}
                 <div class="list-group">
-                    <a href="" class="list-group-item  list-group-item-action">Latest Posts</a>
-                    <a href="" class="list-group-item  list-group-item-action">Latest Posts</a>
-                    <a href="" class="list-group-item  list-group-item-action">Latest Posts</a>
-                    <a href="" class="list-group-item  list-group-item-action">Latest Posts</a>
-                </div>
-                <p class='font-weight-bold mt-2'> Computer Science
-                <div class="list-group">
-                    <a href="" class="list-group-item list-group-item-action">Latest Posts</a>
-                    <a href="" class="list-group-item list-group-item-action">Latest Posts</a>
-                    <a href="" class="list-group-item list-group-item-action">Latest Posts</a>
-                    <a href="" class="list-group-item list-group-item-action">Latest Posts</a>
+                    {% for source in sources %}
+                        <a href="#" class="list-group-item  list-group-item-action">{{ source.source_name }}</a>
+                    {% endfor %}
                 </div>
                 </p>
             </div>
