@@ -18,7 +18,7 @@ class Post(db.Model):
 class Source(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    source_name = db.Column(db.String, nullable=False)
+    source_name = db.Column(db.String, nullable=False, unique=True)
     link = db.Column(db.String, nullable=False)
     posts = db.relationship('Post', backref='source', lazy=True)
 

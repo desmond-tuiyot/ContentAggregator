@@ -7,7 +7,7 @@ from content_aggregator.content_frontend import app, db
 from content_aggregator.content_frontend.models import Post, Source
 from datetime import datetime
 
-db.create_all()
+# db.create_all()
 
 
 def create_db():
@@ -95,6 +95,15 @@ def home():
         # .paginate(per_page=20, page=page)
     return render_template('home.html', posts=posts, sources=sources)
 
+
+@app.route("/posts/<string:source_name>")
+def source_posts(source_name):
+    # page = request.args.get('')
+    source = Source.query.filter_by(source_name=source_name).first_or_404()
+    posts = Post.query.filter_by(source=source).order_by(Post.date.desc())
+    sources = Source.query.all()
+    return render_template('source_posts.html', posts=posts, sources=sources, current_source=source)
+    pass
 
 #
 # @app.route('/about')
