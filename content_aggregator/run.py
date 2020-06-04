@@ -1,6 +1,6 @@
-from scrapy.crawler import CrawlerProcess
+# from scrapy.crawler import CrawlerProcess
 from content_aggregator.content_frontend import app
-from content_aggregator.content_scraper.content_scraper.spiders import posts_spider
+# from content_aggregator.content_scraper.content_scraper.spiders import posts_spider
 
 if __name__ == '__main__':
     # process = CrawlerProcess()

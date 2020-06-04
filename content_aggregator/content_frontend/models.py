@@ -16,7 +16,6 @@ class Post(db.Model):
 
 
 class Source(db.Model):
-
     id = db.Column(db.Integer, primary_key=True)
     source_name = db.Column(db.String, nullable=False, unique=True)
     link = db.Column(db.String, nullable=False)

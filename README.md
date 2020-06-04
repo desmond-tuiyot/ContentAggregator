@@ -2,11 +2,11 @@
 A content aggregator to collect data science/machine
 learning and computer science/programming resources
 
-#### Current TODOs: (they will get more specific as I learn more)
-* Develop the scraping backend
+#### Current TODOs: Priorities
+* ~~Develop the scraping backend~~
     * Library used: **Scrapy**
 * Potential Data Science Sources: 
-    * **[Analytics Vidhya](https://www.analyticsvidhya.com/blog/)**
+    * ~~**[Analytics Vidhya](https://www.analyticsvidhya.com/blog/)**~~
     * **[KDnuggets](https://www.kdnuggets.com/news/index.html)**
     * **[Data Science Central](https://www.datasciencecentral.com/)**
     * **[Machine Learning Mastery](https://machinelearningmastery.com/blog/)**
@@ -18,17 +18,20 @@ learning and computer science/programming resources
     * **[CodePen Blog](https://blog.codepen.io/)**
     * **[Smashing Magazine](https://www.smashingmagazine.com/articles/)**
     * **[Free Code Camp](https://www.freecodecamp.org/news/)**
-    * **[The Crazy Programmer](https://www.thecrazyprogrammer.com/)**
+    * ~~**[The Crazy Programmer](https://www.thecrazyprogrammer.com/)**~~
     * **[Stack Abuse](https://stackabuse.com/)**
     * **[Better Programming](https://medium.com/better-programming)**
-* Create frontend to display the results of our aggregator and incorporate a database to store links, images, headings, 
-and later retrieve them.
+~~* Create frontend to display the results of our aggregator and incorporate a database to store links, images, headings, 
+and later retrieve them.~~
     * Library used: **Flask**
-* Add functionality to allow user to log in and 
-therefore maintain a history of viewed pages, or
+* Schedule crawls to update the aggregator when new content is added
+* Add more websites to the database
+* Deploy on server - Dock container / AWS, etc
+
+#### Other TODOs: Non-priorities
+* Figure out multi-select (to filter by several sources instead of just one)
+* Figure out sorting by date
+* Add functionality to allow user to log in and therefore maintain a history of viewed pages, or
 liked content, etc
 
-#### Look into this
-* The bootstrap version has something to do with the reoccuring error
-of the body overlapping with the body. I'll look into it later
 

@@ -90,7 +90,7 @@ def create_db():
 @app.route("/home")
 def home():
     page = request.args.get('page', default=1, type=int)
-    posts = Post.query.order_by(Post.date.desc()).paginate(per_page=2, page=page)
+    posts = Post.query.order_by(Post.date.desc()).paginate(per_page=20, page=page)
     # posts = Post.query.order_by(Post.date.desc())
     sources = Source.query.all()
     return render_template('home.html', posts=posts, sources=sources)

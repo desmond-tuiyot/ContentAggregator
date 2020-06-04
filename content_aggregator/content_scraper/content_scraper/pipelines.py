@@ -4,74 +4,53 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-from sqlalchemy.orm import sessionmaker
-from scrapy.exceptions import DropItem
-from content_aggregator.content_scraper.content_scraper.models import db_connect, create_table, Post
-from content_aggregator.content_frontend import db
-from content_aggregator.content_frontend.models import Post
-# from content_aggregator.content_scraper.content_scraper.models import Post
+# from sqlalchemy.orm import sessionmaker
+# from scrapy.exceptions import DropItem
+# from content_aggregator.content_scraper.content_scraper.models import db_connect, create_table
+# from content_aggregator.content_frontend import db
+# from content_aggregator.content_frontend.models import Post, Source
+# from content_aggregator.content_scraper.content_scraper.models import Source, Post, session
+from content_scraper.models import Source, Post, session
 
 
-class SiteScraperPipeline:
+class ContentScraperPipeline:
     def process_item(self, item, spider):
-        return item
-
-
-class OriginalSavePostsPipeline:
-    def __init__(self):
-
-        engine = db_connect()
-        create_table(engine)
-        self.Session = sessionmaker(bind=engine)
-
-    def process_item(self, item, spider):
-        session = self.Session()
-        post = Post()
-        post.source = item['post_source']
-        post.title = item['post_title']
-        post.date_posted = item['post_date']
-        post.link = item['post_link']
-
-
-        try:
-            db.session.add(post)
-            db.session.commit()
-
-        except:
-            db.session.rollback()
-            raise
-
-        finally:
-            db.session.close()
-
         return item
 
 
 class SavePostsPipeline:
-    # def __init__(self):
-
-        # engine = db_connect()
-        # create_table(engine)
-        # self.Session = sessionmaker(bind=engine)
+    def __init__(self):
+        # db.drop_all()
+        # db.create_all()
+        # session = session
+        pass
 
     def process_item(self, item, spider):
-        # session = self.Session()
-        source = item['post_source']
-        title = item['post_title']
-        date = item['post_date']
-        link = item['post_link']
-        post = Post(source=source, title=title, date_posted=date, link=link)
+        post = Post()
+        post.title = item['post_title']
+        post.link = item['post_link']
+        post.date = item['post_date']
+        # post = Post(title=title, link=link, date=date_posted)
+        # source = Source(source_name=source_name, link=source_link)
 
+        existing_source = session.query(Source).filter_by(source_name=item['post_source']).first()
+        if existing_source is not None:  # the current source exists
+            post.source = existing_source
+        else:
+            source = Source()
+            source.source_name = item['post_source']
+            source.link = item['post_source_link']
+            post.source = source
 
         try:
-            db.session.add(post)
-            db.session.commit()
+            session.add(post)
+            session.commit()
 
         except:
-            db.session.rollback()
+            session.rollback()
             raise
 
         finally:
-            db.session.close()
+            session.close()
 
         return item
