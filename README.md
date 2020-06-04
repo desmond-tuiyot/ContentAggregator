@@ -26,6 +26,7 @@ and later retrieve them.~~
     * Library used: **Flask**
 * Schedule crawls to update the aggregator when new content is added
 * Add more websites to the database
+* Migrate to other database
 * Deploy on server - Dock container / AWS, etc
 
 #### Other TODOs: Non-priorities
