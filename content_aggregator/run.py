@@ -1,4 +1,4 @@
-from content_aggregator.content_frontend import create_app
+from content_frontend import create_app
 
 app = create_app()
 
