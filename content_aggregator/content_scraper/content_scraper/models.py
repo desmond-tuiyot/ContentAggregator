@@ -1,9 +1,10 @@
 from sqlalchemy import create_engine, Column, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+import os
 
-engine = create_engine('sqlite:///C:\\Users\\NyneTray\\Documents\\Computer_Science\\Python\\ContentAggregator\\content_aggregator\\content_frontend\\content.db', echo=True)
-
+# engine = create_engine('sqlite:///C:\\Users\\NyneTray\\Documents\\Computer_Science\\Python\\ContentAggregator\\content_aggregator\\content_frontend\\content.db', echo=True)
+engine = create_engine(os.environ.get('SQLALCHEMY_DATABASE_URI'))
 Base = declarative_base(engine)
 
 

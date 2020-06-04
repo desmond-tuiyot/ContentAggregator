@@ -6,8 +6,8 @@
                 <div class="article-metadata">
                     <small class="text-muted">{{ post.date }}</small>
                 </div>
-                <h4><a class="article-title" href={{ post.link }}>{{ post.title }}</a></h4>
-                <p class="article-content"><a href={{ post.source.link }}>{{ post.source.source_name }}</a>
+                <h4><a class="article-title" target="_blank" href={{ post.link }}>{{ post.title }}</a></h4>
+                <p class="article-content"><a target="_blank" href={{ post.source.link }}>{{ post.source.source_name }}</a>
                 </p>
             </div>
         </article>
@@ -15,9 +15,9 @@
     {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
         {% if page_num %}
             {% if posts.page == page_num %}
-                <a class="btn btn-dark mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                <a class="btn btn-dark mb-4" target="_blank" href="{{ url_for('posts.home', page=page_num) }}">{{ page_num }}</a>
             {% else %}
-                <a class="btn btn-outline-dark mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                <a class="btn btn-outline-dark mb-4" target="_blank" href="{{ url_for('posts.home', page=page_num) }}">{{ page_num }}</a>
             {% endif %}
             {% else %}
                 ...
@@ -26,6 +26,6 @@
 {% endblock %}
 {% block source_list_content %}
     {% for source in sources %}
-        <a href="{{ url_for('source_posts', source_name=source.source_name) }}" class="list-group-item  list-group-item-action">{{ source.source_name }}</a>
+        <a href="{{ url_for('posts.source_posts', source_name=source.source_name) }}" class="list-group-item  list-group-item-action">{{ source.source_name }}</a>
     {% endfor %}
 {% endblock %}

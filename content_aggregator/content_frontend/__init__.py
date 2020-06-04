@@ -1,10 +1,18 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from content_aggregator.content_frontend.config import Config
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///content.db' # configure later
-db = SQLAlchemy(app)
-db.create_all()
 
-from content_aggregator.content_frontend import routes
+db = SQLAlchemy()
+
+
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+
+    db.init_app(app)
+
+    from content_aggregator.content_frontend.posts.routes import posts
+    app.register_blueprint(posts)
+
+    return app
