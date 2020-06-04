@@ -20,7 +20,8 @@ learning and computer science/programming resources
     * **[Free Code Camp](https://www.freecodecamp.org/news/)**
     * ~~**[The Crazy Programmer](https://www.thecrazyprogrammer.com/)**~~
     * **[Stack Abuse](https://stackabuse.com/)**
-    * **[Better Programming](https://medium.com/better-programming)**
+    * **[Better Programming](https://medium.com/better-programming)**  
+    
 ~~* Create frontend to display the results of our aggregator and incorporate a database to store links, images, headings, 
 and later retrieve them.~~
     * Library used: **Flask**
