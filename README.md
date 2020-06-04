@@ -22,7 +22,7 @@ learning and computer science/programming resources
     * **[Stack Abuse](https://stackabuse.com/)**
     * **[Better Programming](https://medium.com/better-programming)**  
     
-~~* Create frontend to display the results of our aggregator and incorporate a database to store links, images, headings, 
+* ~~Create frontend to display the results of our aggregator and incorporate a database to store links, images, headings, 
 and later retrieve them.~~
     * Library used: **Flask**
 * Schedule crawls to update the aggregator when new content is added
