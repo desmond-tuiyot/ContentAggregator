@@ -19,5 +19,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\NyneTray\Documents\Computer_Science\Python\ContentAggregator\content_aggregator\content_frontend\aggregator.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="content" uuid="e75a1b76-5ffe-47d1-8f66-61ec3e94faf5">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\NyneTray\Documents\Computer_Science\Python\ContentAggregator\content_aggregator\content_frontend\content.db</jdbc-url>
+    </data-source>
   </component>
 </project>

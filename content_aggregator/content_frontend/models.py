@@ -4,7 +4,7 @@ from content_frontend import db
 class Post(db.Model):
     __name__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String, nullable=False)
     link = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
     source_id = db.Column(db.Integer, db.ForeignKey('source.id'), nullable=False)

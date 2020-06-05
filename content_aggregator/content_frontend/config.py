@@ -6,10 +6,11 @@ class Config:
     DEBUG = False
     TESTING = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')  # configure later
+    DATABASE_URL = 'postgresql://postgres:SHOP###dez7228@localhost/content_aggreggator'
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL
+        # os.environ.get('SQLALCHEMY_DATABASE_URI')  # configure later
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
 
-    # DATABASE_URL = "postgresql:///content_db"
 
 
 class ProductionConfig(Config):

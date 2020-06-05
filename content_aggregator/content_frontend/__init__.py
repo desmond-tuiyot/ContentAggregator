@@ -15,7 +15,18 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    ENV = 'prod'
+    if ENV == 'dev':
+        app.debug = True
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:SHOP###dez7228@localhost/content_aggreggator'
+    else:
+        app.debug = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://cdpsefgabpblxg:cbf62189bbd895a92260e2c54dd92324a35c5fcafc204' \
+                                            'b662d8f95e4999c907d@ec2-52-202-146-43.compute-1.amazonaws.com:5432/d4hb0b' \
+                                            'qnaoorsg'
+
     db.init_app(app)
+    # db.create_all()
 
     from content_frontend.posts.routes import posts
     app.register_blueprint(posts)

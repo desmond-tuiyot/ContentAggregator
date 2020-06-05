@@ -3,9 +3,6 @@ from content_frontend.models import Post, Source
 from datetime import datetime
 
 
-db.create_all()
-
-
 def create_db():
     # create dummy source data and post data
     source1 = Source(source_name='Analytics Vidhya',
