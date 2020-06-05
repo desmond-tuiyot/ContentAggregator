@@ -1,4 +1,4 @@
-from content_frontend import db
+from content_aggregator.content_frontend import db
 
 
 class Post(db.Model):

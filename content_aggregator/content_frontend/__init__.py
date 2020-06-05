@@ -4,7 +4,7 @@ from logging.handlers import RotatingFileHandler
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from content_frontend.config import Config
+from content_aggregator.content_frontend.config import Config
 
 
 db = SQLAlchemy()
@@ -28,7 +28,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     # db.create_all()
 
-    from content_frontend.posts.routes import posts
+    from content_aggregator.content_frontend.posts.routes import posts
     app.register_blueprint(posts)
 
     if not app.debug and not app.testing:
