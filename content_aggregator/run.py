@@ -1,5 +1,5 @@
-from content_frontend import create_app, db
-from content_frontend.models import Source, Post
+from content_aggregator.content_frontend import create_app, db
+from content_aggregator.content_frontend.models import Source, Post
 
 app = create_app()
 
