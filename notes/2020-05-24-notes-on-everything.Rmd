@@ -1,0 +1,181 @@
+---
+title: Notes On Everything
+author: Desmond Tuiyot
+date: '2020-05-24'
+slug: notes-on-everything
+categories:
+  - Statistics
+  - Personal Notes
+tags:
+  - Data Analysis
+  - Notes
+  - Random
+bibliography: ref.bib
+# csl: style.csl 
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+## Statistics {#statistics}
+
+## Probability {#probability}
+
+## Machine Learning {#machine_learning}
+
+## Algorithms & Data Structures {#algos_data_structures}
+
+## Python
+
+## RShiny
+
+### 1. Inputs & Outputs
+#### Inputs
+```
+textInput()
+sliderInput()
+selectInput()
+numericalInput()
+dateRangeInput()
+```
+
+all inputs have the format
+
+```{r echo=FALSE, eval=FALSE}
+library(shiny)
+library(dplyr)
+library(tidyr)
+```
+``` {r eval=FALSE}
+__input("inputId",
+        "label",
+        unique_param1, unique_param2, ...)
+```
+
+
+#### Render Functions
+Render functions are used to built outputs in the server based on
+inputs and possibly other stuff
+
+```{r eval=FALSE}
+renderText()
+renderTable()
+renderImage()
+renderPlot()
+```
+
+#### Output Functions
+Output functions are used in the ui to display the result built by 
+render functions in the server
+
+```{r eval=FALSE}
+textOutput()`
+plotOutput()
+tableOutput() or dataTableOutput()
+imageOutput()
+```
+
+##### Non-shiny output and render functions
+DT, leaflet, and plotly -> interactive data tables, maps, and plots as Shiny outputs
+
+In order to add an output to a Shiny app, we need to:
+
+1. Create the output -> could be a plot, table, string, etc
+2. Render the output in the `server` function using appropriate `Render___` function.
+3. Assign this render to a variable name prefixed with `output$___`
+3. Use the corresponding `___Output` and pass in the variable name
+
+### Layouts and Themes
+
+#### Layouts
+
+1. Sidebar layouts
+```{r eval = FALSE}
+sidebarLayout(
+  sidebarPanel(insert input/output here),
+  mainPanel(insert input/output here)
+)
+```
+
+2. Tab layouts
+```{r eval=FALSE}
+sidebarLayout(
+  sidebarPanel(insert input/output here),
+  mainPanel(
+    
+    tabsetPanel(
+      tabPanel(),
+      tabPanel()
+    )
+  )
+)
+```
+
+#### Themes
+Add a theme selector to your Ui
+```{r eval=FALSE}
+shinythemes::themeSelector()
+```
+Then you can add it to your Ui
+
+#### Building The App: A Process
+
+1. Add inputs to the `ui()`
+2. Add outputs to the `ui()`/`server()`
+3. Modify the app layout in the `ui()`
+4. Update the output in the `server()` to incorporate the input
+
+### Reactive Programming  
+#### Reactivity 101  
+1. Reactive Sources  
+Often input widgets on a browser - `textInput`, `textOutput`, and so on  
+Can be connected to multiple endpoints
+2. Reactive Endpoints  
+Inputs such as plots or tables that show some result and is connected to a reactive source  
+An example of this are  observers. THe `render__` family of functions are observers. They generate reactive expressions, which when assigned to a reactive source, are turned into observers
+3. Reactive Conductors  
+These wrap around a computation that may be repeatedly evaluated. An implementation of this is: Reactive Expressions    
+These are similar to functions but are lazily loaded and cached.
+
+#### Reactives vs Observers  
+* `reactive()` calculates values, with no side effects
+* `observe()` performs actions, with side effects
+
+* **Key Differences:**  
+  + Reactives return a value, while observers do not return any value
+  + Reactives are lazily loaded, observers eagerly respond to changes in their dependencies
+  + Observers are used primarily for their side effects, while reactives must not have side effects
+
+#### Stop-delay-trigger shiny actions  
+**Isolate** - By default, any changes to inputs automatically updates the dependent outputs  
+We can use `isolate()` to make sure that the output does not automatically update
+when the input changes- we wrap the reactive value like so 
+```{r eval=FALSE}
+isolate(input$___)
+```  
+**Trigger** - When we want to trigger an action in response to some event, we create reactive expressions using `eventReactive` like below. 
+```{r eval=FALSE}
+rv<-eventReactive(event_to_react_to(could be a button),
+                  output)
+```
+If you want to perform an action in response to an event, use `observeReactive`
+```{r eval=FALSE}
+rv<-eventReactive(event_to_react_to,
+                  action)
+```
+
+#### Other Stuff.  
+1. To show an error message, wrap the input inside  a `need` function, wrapped around a `validate` function. 
+```{r eval=FALSE}
+render___({
+  validate(
+    need(input$param_name, "Error message")
+  )
+})
+```
+2. `shinyWidgets` is a package that provides a function `shinyWidgetsGallery()` which opens up a custom app that shows example inputs and corresponding code that you can incorporate into your app 
+
+
+
+## References {#references}

@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-from content_aggregator.content_frontend.models import Post, Source
+from content_frontend.models import Post, Source
 
 
 posts = Blueprint('posts', __name__)

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="aggregator" uuid="09d46815-6afe-4283-908a-6fb72461c12a">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\NyneTray\Documents\Computer_Science\Python\ContentAggregator\content_aggregator\site_scraper\aggregator.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="aggregator [2]" uuid="84d4d20e-dbc2-428a-a96d-bc18c32367ff">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\NyneTray\Documents\Computer_Science\Python\ContentAggregator\content_aggregator\content_scraper\content_scraper\aggregator.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="aggregator [3]" uuid="fbc84a46-fbcd-4698-b657-a9e24d4979c2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\NyneTray\Documents\Computer_Science\Python\ContentAggregator\content_aggregator\content_frontend\aggregator.db</jdbc-url>
+    </data-source>
+  </component>
+</project>

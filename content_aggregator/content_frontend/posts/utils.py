@@ -1,5 +1,5 @@
-from content_aggregator.content_frontend import db
-from content_aggregator.content_frontend.models import Post, Source
+from content_frontend import db
+from content_frontend.models import Post, Source
 from datetime import datetime
 
 

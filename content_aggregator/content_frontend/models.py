@@ -1,7 +1,8 @@
-from content_aggregator.content_frontend import db
+from content_frontend import db
 
 
 class Post(db.Model):
+    __name__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     link = db.Column(db.String, nullable=False)
@@ -14,6 +15,7 @@ class Post(db.Model):
 
 
 class Source(db.Model):
+    __name__ = 'source'
     id = db.Column(db.Integer, primary_key=True)
     source_name = db.Column(db.String, nullable=False, unique=True)
     link = db.Column(db.String, nullable=False)
