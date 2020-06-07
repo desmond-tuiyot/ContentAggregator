@@ -91,3 +91,10 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+#
+# DATABASE = {'drivername': 'postgres',
+#         'host': 'eec2-52-202-146-43.compute-1.amazonaws.com',
+#         'port': '5432',
+#         'username': 'cdpsefgabpblxg',
+#         'password': 'cbf62189bbd895a92260e2c54dd92324a35c5fcafc204b662d8f95e4999c907d',
+#         'database': 'd4hb0bqnaoorsg'}

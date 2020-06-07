@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block main_content %}
-    {% for post in posts %}
+    {% for post in posts.items %}
         <article class="media content-section">
             <div class="media-body">
                 <div class="article-metadata">
@@ -12,6 +12,17 @@
                 </p>
             </div>
         </article>
+    {% endfor %}
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+            {% if posts.page == page_num %}
+                <a class="btn btn-dark mb-4" href="{{ url_for('posts.source_posts', source_name=current_source.source_name, page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+                <a class="btn btn-outline-dark mb-4" href="{{ url_for('posts.source_posts', source_name=current_source.source_name, page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+            {% else %}
+                ...
+        {% endif %}
     {% endfor %}
 {% endblock %}
 {% block source_list_content %}

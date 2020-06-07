@@ -1,1 +1,1 @@
-web: gunicorn content_aggregator.run:app
+web: gunicorn content_aggregator.run:app; gunicorn

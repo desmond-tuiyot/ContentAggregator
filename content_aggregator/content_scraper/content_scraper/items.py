@@ -29,8 +29,31 @@ def parse_location(text):
     return text[3:]
 
 
+def parse_date(date):
+    # if type(date) == list:
+    #     date = ' '.join(date)
+    date = date.split(' ')
+    parsed = ""
+    extract = True
+    for word in date:
+        if ':' in word and ('pm' in word or 'am' in word):
+            extract = False
+        elif not extract:
+            continue
+        if word == ',' or word == 'at':
+            continue
+        parsed = parsed + ' ' + word
+    return parsed
+
+
 def convert_datetime(date):
-    return dateutil.parser.parse(date)
+    # print("\n\n\n\n\n")
+    print(date)
+    # print("\n\n\n\n\n")
+    try:
+        return dateutil.parser.parse(date)
+    except:
+        return dateutil.parser.parse(parse_date(date))
 
 
 class PostItem(Item):
@@ -53,5 +76,3 @@ class PostItem(Item):
         input_processor=MapCompose(convert_datetime),
         output_processor=TakeFirst()
     )
-
-

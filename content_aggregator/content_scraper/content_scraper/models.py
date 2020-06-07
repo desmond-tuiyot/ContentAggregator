@@ -3,8 +3,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 import os
 
-# engine = create_engine('sqlite:///C:\\Users\\NyneTray\\Documents\\Computer_Science\\Python\\ContentAggregator\\content_aggregator\\content_frontend\\content.db', echo=True)
-engine = create_engine(os.environ.get('SQLALCHEMY_DATABASE_URI'))
+engine = create_engine('sqlite:///C:\\Users\\NyneTray\\Documents\\Computer_Science\\Python\\ContentAggregator\\content_aggregator\\content_frontend\\content.db', echo=True)
+# engine = create_engine('postgres://cdpsefgabpblxg:cbf62189bbd895a92260e2c54dd92324a35c5fcafc204b662d8f95e4999c907d@ec2-52-202-146-43.compute-1.amazonaws.com:5432/d4hb0bqnaoorsg')
 Base = declarative_base(engine)
 
 

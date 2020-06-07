@@ -23,10 +23,6 @@
 
 <main role="main" class="container">
     <div class="row">
-        <div class="col-md-9">
-            <!-- Main Content -->
-            {% block main_content %}{% endblock %}
-        </div>
         <div class="col-md-3">
             <div class="content-section">
                 <h3>Select Source</h3>
@@ -36,6 +32,10 @@
                 </div>
 {#                </p>#}
             </div>
+        </div>
+        <div class="col-md-9">
+            <!-- Main Content -->
+            {% block main_content %}{% endblock %}
         </div>
     </div>
 </main>

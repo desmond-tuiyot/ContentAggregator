@@ -15,7 +15,9 @@ def home():
 
 @posts.route("/posts/<string:source_name>")
 def source_posts(source_name):
+    page = request.args.get('page', default=1, type=int)
     source = Source.query.filter_by(source_name=source_name).first_or_404()
-    posts = Post.query.filter_by(source=source).order_by(Post.date.desc())
+    posts = Post.query.filter_by(source=source)\
+        .order_by(Post.date.desc()).paginate(per_page=20, page=page)
     sources = Source.query.all()
     return render_template('source_posts.html', posts=posts, sources=sources, current_source=source)

@@ -6,8 +6,8 @@ class Config:
     DEBUG = False
     TESTING = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    DATABASE_URL = 'postgresql://postgres:SHOP###dez7228@localhost/content_aggreggator'
-    SQLALCHEMY_DATABASE_URI = DATABASE_URL
+    # DATABASE_URL = 'postgresql://postgres:SHOP###dez7228@localhost/content_aggreggator'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///content.db'
         # os.environ.get('SQLALCHEMY_DATABASE_URI')  # configure later
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
 

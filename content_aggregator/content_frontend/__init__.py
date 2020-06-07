@@ -1,13 +1,14 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from content_aggregator.content_frontend.config import Config
 
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 
 def create_app(config_class=Config):
@@ -15,10 +16,12 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    ENV = 'prod'
+    ENV = 'dev'
     if ENV == 'dev':
         app.debug = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:SHOP###dez7228@localhost/content_aggreggator'
+        # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:SHOP###dez7228@localhost/content_aggreggator'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///content.db'
+
     else:
         app.debug = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://cdpsefgabpblxg:cbf62189bbd895a92260e2c54dd92324a35c5fcafc204' \
@@ -26,6 +29,7 @@ def create_app(config_class=Config):
                                             'qnaoorsg'
 
     db.init_app(app)
+    migrate.init_app(app, db)
     # db.create_all()
 
     from content_aggregator.content_frontend.posts.routes import posts
